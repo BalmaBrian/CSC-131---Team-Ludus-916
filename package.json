@@ -10,6 +10,11 @@
     "type": "git",
     "url": "git+https://github.com/BalmaBrian/CSC-131---Team-Ludus-916.git"
   },
+  "keywords": [
+    "node",
+    "restfull",
+    "api"
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {
