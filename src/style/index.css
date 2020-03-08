@@ -1,0 +1,16 @@
+.board-area {
+  background-color: darkslategray;
+  padding: 2rem;
+}
+
+.collection-area {
+  background-color: azure;
+  padding: 2rem;
+  box-shadow: 5px 10px;
+}
+
+.item-card {
+  background-color: aqua;
+  padding: 2rem;
+  box-shadow: 5px 10px;
+}
