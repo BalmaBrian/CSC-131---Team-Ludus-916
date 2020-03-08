@@ -8,7 +8,9 @@ export default class Layout extends React.Component {
         <div className="board-area">
           <h1>This is the Layout</h1>
           <Board />
+          <br />
           <Board />
+          <br />
           <Board />
         </div>
       </center>
