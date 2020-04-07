@@ -47,5 +47,5 @@ app.use((error, req, res, next) => {
   });
 });
 
-// exporting to server.js
+// Exporting to server.js
 module.exports = app;
