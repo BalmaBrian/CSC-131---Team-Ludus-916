@@ -5,6 +5,7 @@
 /backend/node_modules
 /frontend/.pnp
 /frontend/.pnp.js
+/backend/src/keys/csc131-5f891cf3314e.json
 
 # testing
 /frontend/coverage

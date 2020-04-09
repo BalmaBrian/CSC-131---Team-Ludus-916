@@ -4,8 +4,13 @@ const app = express();
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 
-const productRoutes = require("./api/routes/products");
-const orderRoutes = require("./api/routes/orders");
+//* Require Routes *//
+const nominationsRoutes = require("./routes/nominations");
+const categoryRoute = require("./routes/category");
+const entityRoute = require("./routes/entity");
+const winnerRoute = require("./routes/winner");
+const yearRoute = require("./routes/year");
+//* Require Routes End *//
 
 // middleweare
 app.use(morgan("dev"));
@@ -27,9 +32,13 @@ app.use((req, res, next) => {
   next(); // move on
 });
 
-// Routes
-app.use("/products", productRoutes);
-app.use("/orders", orderRoutes);
+//* Routes *//
+app.use("/nominations/category", categoryRoute);
+app.use("/nominations/entity", entityRoute);
+app.use("/nominations/winner", winnerRoute);
+app.use("/nominations/year", yearRoute);
+app.use("/nominations", nominationsRoutes);
+//* Routes End *//
 
 // Error handling
 app.use((req, res, next) => {
