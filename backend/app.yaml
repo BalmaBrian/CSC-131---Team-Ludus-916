@@ -12,5 +12,6 @@
 # limitations under the License.
 
 # [START app_yaml]
+service: ludus-db
 runtime: nodejs10
 # [END app_yaml]
