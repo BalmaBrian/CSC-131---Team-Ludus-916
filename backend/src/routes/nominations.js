@@ -12,20 +12,20 @@ router.get("/", (req, res, next) => {
   let nominationList = [];
   nomination
     .get()
-    .then(snapshot => {
-      snapshot.forEach(doc => {
+    .then((snapshot) => {
+      snapshot.forEach((doc) => {
         let info = doc.data();
         let data = {
           nominationId: doc.id,
-          info
+          info,
         };
         nominationList.push(data);
       });
       res.status(200).json({
-        nominationList
+        nominationList,
       });
     })
-    .catch(err => {
+    .catch((err) => {
       console.log("Error getting documents", err);
     });
   console.log(nominationList);
@@ -36,15 +36,13 @@ router.post("/", (req, res, next) => {
   const nomination = {
     category: req.body.category,
     entity: req.body.entity,
-    winner: req.body.winner,
-    year: req.body.year
+    winner: Boolean(req.body.winner),
+    year: Number(req.body.year),
   };
-  db.collection("nominations")
-    .doc()
-    .set(nomination);
+  db.collection("nominations").doc().set(nomination);
   res.status(200).json({
     message: "nomination added",
-    info: nomination
+    info: nomination,
   });
 });
 
@@ -53,7 +51,7 @@ router.get("/:nominationField", (req, res, next) => {
   db.collection("nominations")
     .doc(req.params.nominationField)
     .get()
-    .then(snapshot => {
+    .then((snapshot) => {
       let data = snapshot._fieldsProto;
       data.category = data.category.stringValue;
       data.entity = data.entity.stringValue;
@@ -61,15 +59,49 @@ router.get("/:nominationField", (req, res, next) => {
       data.year = data.year.integerValue;
       res.status(200).json({
         nominationID: snapshot.id,
-        data
+        data,
       });
     })
-    .catch(err => {
+    .catch((err) => {
       console.log("Error getting documents", err);
     });
 });
 
-// remove a document from the data base
+// delete a document given proper info
+router.delete("/", (req, res, next) => {
+  db.collection("nominations")
+    .where("category", "==", req.body.category)
+    .where("entity", "==", req.body.entity)
+    .where("winner", "==", req.body.winner)
+    .where("year", "==", req.body.year)
+    .get()
+    .then((snapshot) => {
+      if (snapshot.empty) {
+        console.log("No matching documents.");
+        res.status(404).json({ message: "invalid data" });
+        return;
+      }
+      snapshot.forEach((doc) => {
+        db.collection("nominations")
+          .doc(doc.id)
+          .delete()
+          .then(() => {
+            res.status(200).json({
+              message: "document deleted",
+              document: doc.id,
+            });
+          })
+          .catch((err) => {
+            console.log("Error getting documents", err);
+          });
+      });
+    })
+    .catch((err) => {
+      console.log("Error getting documents", err);
+    });
+});
+
+// remove a document from the database
 router.delete("/:nominationField", (req, res, next) => {
   db.collection("nominations")
     .doc(req.params.nominationField)
@@ -77,10 +109,10 @@ router.delete("/:nominationField", (req, res, next) => {
     .then(() => {
       res.status(200).json({
         message: "document deleted",
-        document: req.params.nominationField
+        document: req.params.nominationField,
       });
     })
-    .catch(err => {
+    .catch((err) => {
       console.log("Error getting documents", err);
     });
 });
