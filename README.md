@@ -41,6 +41,16 @@ Each index of the array has the key map structure of the following.
 
 Using the `/nominations/` route in a GET request will provide a `200` if successful and all nominations in the database.
 
+### GET `/nominations/{ document ID }`
+
+By using the `/nominations/` route with a singe prameter you can get a singlton document. The prameter must be the document name anything else will provide a `404` and an error messege in json. The error looks like the example below.
+
+```json
+{
+  "message": "Document dose not exsist"
+}
+```
+
 ### POST `/nominations/`
 
 By using the `/nomination/` route you can also add documents to the database. Before you make a POST command, you do need to pass data over. The data has to be in JSON in the format below.
@@ -68,7 +78,7 @@ These four fields: category, entity, winner, and year are required. Giving less 
 }
 ```
 
-### GET `/nominations/{ document ID }`
+### DELETE `/nominations/`
 
 ### DELETE `/nominations/{ document ID }`
 
