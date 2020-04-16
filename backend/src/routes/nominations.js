@@ -64,6 +64,9 @@ router.get("/:nominationField", (req, res, next) => {
     })
     .catch((err) => {
       console.log("Error getting documents", err);
+      res.status(404).json({
+        message: "Document dose not exsist",
+      });
     });
 });
 
