@@ -2,7 +2,9 @@ const express = require("express");
 const router = express.Router();
 
 // initalizing admin and adding database //
-const { admin } = require("./certs/admin");
+const {
+  admin
+} = require("./certs/admin");
 let db = admin.firestore();
 // initalizing admin and adding database END //
 
@@ -10,7 +12,7 @@ let db = admin.firestore();
 // with the proper code like 502 or something
 router.get("/", (req, res, next) => {
   res.status(404).json({
-    message: "This is not a available"
+    message: "This is not a available",
   });
 });
 
@@ -18,7 +20,7 @@ router.get("/", (req, res, next) => {
 // with the proper code like 502 or something
 router.post("/", (req, res, next) => {
   res.status(404).json({
-    message: "This is not a available"
+    message: "This is not a available",
   });
 });
 
@@ -28,28 +30,28 @@ router.get("/:categoryField", (req, res, next) => {
   db.collection("nominations")
     .where("category", "==", req.params.categoryField)
     .get()
-    .then(snapshot => {
+    .then((snapshot) => {
       if (snapshot.empty) {
         res.status(404).json({
           message: "Not a valid term",
-          field: req.params.categoryField
+          field: req.params.categoryField,
         });
         return;
       }
 
-      snapshot.forEach(doc => {
+      snapshot.forEach((doc) => {
         let info = doc.data();
         let data = {
           nominationId: doc.id,
-          info
+          info,
         };
         categoryList.push(data);
       });
       res.status(200).json({
-        categoryList
+        categoryList,
       });
     })
-    .catch(err => {
+    .catch((err) => {
       console.log("Error getting documents", err);
     });
 });
@@ -58,7 +60,7 @@ router.get("/:categoryField", (req, res, next) => {
 // with the proper code like 502 or something
 router.delete("/:categoryField", (req, res, next) => {
   res.status(404).json({
-    message: "This is not a available"
+    message: "This is not a available",
   });
 });
 
