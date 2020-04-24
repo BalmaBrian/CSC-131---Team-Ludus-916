@@ -1,17 +1,139 @@
-.board-area {
-  background-color: blanchedalmond;
-  padding: 2rem;
+/**********************Main*******************/
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web:400,600,700,900');
+
+body {
+  font-family: 'Titillium Web', sans-serif;
+  transition: all 2s ease;
 }
 
-.collection-area {
-  background-color: azure;
-  padding: 2rem;
-  box-shadow: 10px 10px;
+.no-margin {
+  margin-left: 0;
+  margin-right: 0;
 }
 
-.item-card {
-  background-color: aqua;
-  padding: 2rem;
-  box-shadow: 10px 10px;
-  text-align: left;
+/**********************Main*******************/
+
+/**********************React CSS**************/
+
+/**********************React CSS**************/
+
+/**********************Section1***************/
+.section1 {
+  background-color: #FFEB3B;
+  height: 19.5em;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
 }
+
+/* jumbotron*/
+.jumbotron {
+  background-color: transparent;
+  color: #212121;
+}
+
+/*Navigation bar*/
+.main-navigation-con {
+  margin-bottom: 100px;
+}
+
+.main-navigation {
+  margin-top: 10px;
+  border-radius: 0px;
+}
+
+.main-navigation ul.nav {
+  margin: 12px auto;
+}
+
+.main-navigation a.navbar-brand {
+  color: #FFEB3B;
+  background-color: #212121;
+  border-radius: 1px;
+  height: auto;
+  font-size: 30px;
+  padding: 8px 10px;
+  margin: 10px auto;
+}
+
+.main-navigation ul.nav>li {
+  margin: 0px 5px;
+}
+
+.main-navigation ul.nav>li>a {
+  color: #212121;
+  background-color: #FFEB3B;
+  border-radius: 5px;
+  padding: 5px;
+  font-weight: bold;
+  position: relative;
+  font-weight: 600;
+}
+
+.main-navigation ul.nav>li>a::before {
+  content: "";
+  width: 0px;
+  border-bottom: 1px solid;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  transition: all ease 0.2s;
+}
+
+.main-navigation ul.nav>li>a:hover::before {
+  width: 100%;
+}
+
+.main-navigation .navbar-toggle {
+  background-color: #212121;
+}
+
+.main-navigation .navbar-toggle .icon-bar {
+  background-color: #FFEB3B;
+}
+
+.signup-form {
+  background-color: #212121;
+  padding: 10px;
+  border-radius: 0px;
+  color: #FFEB3B;
+  position: relative;
+  border: 1px solid #424242;
+  border-radius: 5px;
+  box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.5);
+}
+
+.signup-form::after {
+  content: "";
+  position: absolute;
+  height: 0%;
+  left: -58px;
+  right: 0%;
+  border: 58px solid transparent;
+  border-top-color: #212121;
+  top: 100%;
+  bottom: 0;
+  margin: auto;
+  bottom: 0;
+  z-index: -1;
+}
+
+.signup-form input,
+.signup-form input:focus {
+  box-shadow: none;
+  border-radius: 3px;
+  border: 0px;
+}
+
+.signup-form .submit-btn {
+  display: block;
+  margin: auto;
+  border: none;
+  background-color: #FFEB3B;
+  border-radius: 4px;
+  padding: 5px 25px;
+  color: #212121;
+  font-weight: bold;
+}
+
+/****************** section1 *******************/
