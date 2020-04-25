@@ -1,40 +1,58 @@
 import React from "react";
-// import more componets
+import Cards from "./Cards/Cards";
 
 export default class View extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      display: "home",
+      value: "",
+      area: "",
     };
+    this.handleChangeInput = this.handleChangeInput.bind(this);
+    this.handleChangeSelect = this.handleChangeSelect.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleCheck(e) {
-    this.setState({
-      display: e.currentTarget.dataset.id,
-    });
+  handleChangeInput(event) {
+    this.setState({ value: event.target.value });
+  }
+
+  handleChangeSelect(event) {
+    this.setState({ area: event.target.value });
+  }
+
+  handleSubmit(event) {
+    alert("A name was submitted: " + this.state.value);
+    event.preventDefault();
   }
 
   render() {
     return (
       <div>
-        <select name="category" id="select-input" class="select-input-field">
-          {/* add more here accoring to category */}
-          <option value="0">Choose your Oscar category</option>
-        </select>
-        <select name="field" id="select-field" class="select-document-field">
-          {/* add more here accoring to field */}
-          <option value="0">Choose your field</option>
-          <option value="category">category</option>
-          <option value="entity">entity</option>
-          <option value="winner">winner</option>
-          <option value="year">year</option>
-        </select>
-        <input type="text" id="input" name="value-input" />
-        <button class="myButton" id="select-button">
-          Search
-        </button>
-        <div>{/* add component here for displaying data */}</div>
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            Choose search area:
+            <select value={this.state.area} onChange={this.handleChangeSelect}>
+              {/* add more here accoring to field */}
+              <option value="">Choose your field</option>
+              <option value="category">category</option>
+              <option value="entity">entity</option>
+              <option value="winner">winner</option>
+              <option value="year">year</option>
+            </select>
+          </label>
+          <br />
+          <label>
+            Search:
+            <input
+              type="text"
+              value={this.state.value}
+              onChange={this.handleChangeInput}
+            />
+          </label>
+          <input type="submit" value="Submit" />
+        </form>
+        <Cards area={this.state.area} value={this.state.value} />
       </div>
     );
   }
