@@ -20,7 +20,7 @@ export default class DefaultCards extends React.Component {
   getCards() {
     let htmlString = "";
     let nominationList = this.state.info;
-    console.log(nominationList);
+    // console.log(nominationList);
     for (const property in nominationList) {
       let prop1 = nominationList[property];
       let prop2 = prop1.info;

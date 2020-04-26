@@ -22,10 +22,16 @@ export default class View extends React.Component {
   }
 
   handleSubmit(event) {
-    alert("A name was submitted: " + this.state.value);
+    // alert("A name was submitted: " + this.state.value); // Make better alert
+    this.setState({
+      value: this.state.value,
+      area: this.state.area,
+    });
     event.preventDefault();
   }
 
+  // Change input to select where values are based on the diffrent values in the
+  // diffrent options
   render() {
     return (
       <div>
@@ -33,7 +39,6 @@ export default class View extends React.Component {
           <label>
             Choose search area:
             <select value={this.state.area} onChange={this.handleChangeSelect}>
-              {/* add more here accoring to field */}
               <option value="">Choose your field</option>
               <option value="category">category</option>
               <option value="entity">entity</option>
