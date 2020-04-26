@@ -15,7 +15,7 @@ export default class WinnerCards extends React.Component {
     )
       .then((res) => res.json())
       .then((data) => {
-        let info = data.categoryList;
+        let info = data.winnerList;
         this.setState({ info });
       })
       .catch(console.log);

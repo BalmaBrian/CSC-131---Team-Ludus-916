@@ -15,7 +15,7 @@ export default class EntityCards extends React.Component {
     )
       .then((res) => res.json())
       .then((data) => {
-        let info = data.categoryList;
+        let info = data.entityList;
         this.setState({ info });
       })
       .catch(console.log);

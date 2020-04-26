@@ -15,7 +15,7 @@ export default class YearCards extends React.Component {
     )
       .then((res) => res.json())
       .then((data) => {
-        let info = data.categoryList;
+        let info = data.yearList;
         this.setState({ info });
       })
       .catch(console.log);
