@@ -1,9 +1,9 @@
 import React from "react";
-import CategoryCards from "./CategoryCards";
-import EntityCards from "./EntityCards";
-import WinnerCards from "./WinnerCards";
-import YearCards from "./YearCards";
-import DefaultCards from "./DefaultCards";
+import CategoryCards from "./Cards/CategoryCards";
+import EntityCards from "./Cards/EntityCards";
+import WinnerCards from "./Cards/WinnerCards";
+import YearCards from "./Cards/YearCards";
+import DefaultCards from "./Cards/DefaultCards";
 
 export default class Cards extends React.Component {
   getContent() {
