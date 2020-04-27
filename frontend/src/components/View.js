@@ -10,7 +10,6 @@ export default class View extends React.Component {
     };
     this.handleChangeInput = this.handleChangeInput.bind(this);
     this.handleChangeSelect = this.handleChangeSelect.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChangeInput(event) {
@@ -19,15 +18,6 @@ export default class View extends React.Component {
 
   handleChangeSelect(event) {
     this.setState({ area: event.target.value });
-  }
-
-  handleSubmit(event) {
-    // alert("A name was submitted: " + this.state.value); // Make better alert
-    this.setState({
-      value: this.state.value,
-      area: this.state.area,
-    });
-    event.preventDefault();
   }
 
   dropdownFields() {
@@ -40,8 +30,8 @@ export default class View extends React.Component {
   }
 
   dropdownInput() {
-    // ! add stuff here
-    let data = [];
+    // ! make an if that changes the list object 'data' based on the state of the map object 'area'
+    let data = ["Choose your information"];
     let htmlString = "";
     data.forEach((item, index) => {
       htmlString += `<option value="${item}">${item}</option>"`;
@@ -79,12 +69,15 @@ export default class View extends React.Component {
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                   <ul class="nav navbar-nav">
-                    {/* error here from href */}
                     <li class="active">
-                      <a href="#">Home</a>
+                      <a href="https://github.com/BalmaBrian/csc-131---team-ludus-916">
+                        Github
+                      </a>
                     </li>
                     <li>
-                      <a href="#">Api Documentation</a>
+                      <a href="https://balmabrian.github.io/csc-131---team-ludus-916/">
+                        Api Documentation
+                      </a>
                     </li>
                   </ul>
                 </div>
@@ -105,7 +98,6 @@ export default class View extends React.Component {
                     <form onSubmit={this.handleSubmit}>
                       <label>
                         Choose the Document Field of Interest:
-                        {/* dangerouslySetInnerHTML={{ __html: renderHtml }} */}
                         <select
                           class="custom-select"
                           value={this.state.area}
@@ -113,6 +105,7 @@ export default class View extends React.Component {
                           dangerouslySetInnerHTML={{ __html: renderHtml }}
                         ></select>
                       </label>
+                      <br />
                       <br />
                       <label>
                         Choose the Information of Interest:
@@ -123,8 +116,6 @@ export default class View extends React.Component {
                           dangerouslySetInnerHTML={{ __html: renderHtml2 }}
                         ></select>
                       </label>
-                      <br />
-                      <input type="submit" value="Submit" />
                     </form>
                   </div>
                 </div>
