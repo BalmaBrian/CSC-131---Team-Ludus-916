@@ -8,6 +8,8 @@ export default class YearCards extends React.Component {
   }
 
   test() {
+    if ((this.props.value === "") | (this.props.value === "Select Field"))
+      return;
     fetch(
       `https://ludus-db-dot-csc131.appspot.com/nominations/year/${this.props.value
         .split(" ")
@@ -24,7 +26,6 @@ export default class YearCards extends React.Component {
   getCards() {
     let htmlString = "";
     let nominationList = this.state.info;
-    // console.log(nominationList);
     for (const property in nominationList) {
       let prop1 = nominationList[property];
       let prop2 = prop1.info;
@@ -35,7 +36,7 @@ export default class YearCards extends React.Component {
       let winner = prop2.winner;
 
       htmlString += `
-					<div class="materialCard">
+					<div class="materialCard warning">
 						<header>
 							<h1>Document ID: ${id}</h1>
 							<h2><small>Lorem ipsum dolor sit amet</small></h2>
@@ -56,6 +57,7 @@ export default class YearCards extends React.Component {
   }
 
   render() {
+    this.test();
     let renderHtml = this.getCards();
     return <div dangerouslySetInnerHTML={{ __html: renderHtml }}></div>;
   }

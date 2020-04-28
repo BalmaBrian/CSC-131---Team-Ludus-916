@@ -1,5 +1,14 @@
 import React from "react";
-import Cards from "./Cards";
+import CategoryCards from "./Cards/CategoryCards";
+import EntityCards from "./Cards/EntityCards";
+import WinnerCards from "./Cards/WinnerCards";
+import YearCards from "./Cards/YearCards";
+import DefaultCards from "./Cards/DefaultCards";
+import Master from "./fields/Master";
+// import CategoryFields from "./fields/CategoryFields";
+// import EntityFields from "./fields/EntityFields";
+// import WinnerFields from "./fields/WinnerFields";
+// import YearFields from "./fields/YearFields";
 
 export default class View extends React.Component {
   constructor(props) {
@@ -31,12 +40,52 @@ export default class View extends React.Component {
 
   dropdownInput() {
     // ! make an if that changes the list object 'data' based on the state of the map object 'area'
-    let data = ["Choose your information"];
-    let htmlString = "";
+    let data = [];
+    switch (this.state.area) {
+      case "winner":
+        data = Master.info.winner;
+        break;
+
+      case "category":
+        data = Master.info.category;
+        break;
+
+      case "year":
+        data = Master.info.year;
+        break;
+
+      case "entity":
+        data = Master.info.entity;
+        break;
+
+      default:
+        data = [];
+        break;
+    }
+    let htmlString = '<option value="Select a Field">Select a Field</option>';
     data.forEach((item, index) => {
       htmlString += `<option value="${item}">${item}</option>"`;
     });
     return htmlString;
+  }
+
+  getContent() {
+    switch (this.state.area) {
+      case "category":
+        return <CategoryCards value={this.state.value} />;
+
+      case "entity":
+        return <EntityCards value={this.state.value} />;
+
+      case "year":
+        return <YearCards value={this.state.value} />;
+
+      case "winner":
+        return <WinnerCards value={this.state.value} />;
+
+      default:
+        return <DefaultCards value={this.state.value} />;
+    }
   }
 
   // Change input to select where values are based on the diffrent values in the
@@ -63,7 +112,10 @@ export default class View extends React.Component {
                     <span class="icon-bar"></span>
                   </button>
                   {/* error here */}
-                  <a class="navbar-brand" href="#">
+                  <a
+                    class="navbar-brand"
+                    href="https://www.youtube.com/watch?v=oHg5SJYRHA0"
+                  >
                     Ludus 916
                   </a>
                 </div>
@@ -106,7 +158,6 @@ export default class View extends React.Component {
                         ></select>
                       </label>
                       <br />
-                      <br />
                       <label>
                         Choose the Information of Interest:
                         <select
@@ -123,7 +174,7 @@ export default class View extends React.Component {
             </div>
           </div>
         </div>
-        <Cards area={this.state.area} value={this.state.value} />
+        {this.getContent()}
       </div>
     );
   }

@@ -18,9 +18,10 @@ export default class DefaultCards extends React.Component {
   }
 
   getCards() {
+    if ((this.props.value === "") | (this.props.value === "Select Field"))
+      return;
     let htmlString = "";
     let nominationList = this.state.info;
-    // console.log(nominationList);
     for (const property in nominationList) {
       let prop1 = nominationList[property];
       let prop2 = prop1.info;
@@ -52,6 +53,7 @@ export default class DefaultCards extends React.Component {
   }
 
   render() {
+    this.test();
     let renderHtml = this.getCards();
     return <div dangerouslySetInnerHTML={{ __html: renderHtml }}></div>;
   }

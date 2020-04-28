@@ -22,9 +22,10 @@ export default class EntityCards extends React.Component {
   }
 
   getCards() {
+    if ((this.props.value === "") | (this.props.value === "Select Field"))
+      return;
     let htmlString = "";
     let nominationList = this.state.info;
-    // console.log(nominationList);
     for (const property in nominationList) {
       let prop1 = nominationList[property];
       let prop2 = prop1.info;
@@ -35,7 +36,7 @@ export default class EntityCards extends React.Component {
       let winner = prop2.winner;
 
       htmlString += `
-					<div class="materialCard">
+					<div class="materialCard alert">
 						<header>
 							<h1>Document ID: ${id}</h1>
 							<h2><small>Lorem ipsum dolor sit amet</small></h2>
@@ -56,6 +57,7 @@ export default class EntityCards extends React.Component {
   }
 
   render() {
+    this.test();
     let renderHtml = this.getCards();
     return <div dangerouslySetInnerHTML={{ __html: renderHtml }}></div>;
   }

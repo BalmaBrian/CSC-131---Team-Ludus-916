@@ -8,23 +8,22 @@ export default class WinnerCards extends React.Component {
   }
 
   test() {
+    if ((this.props.value === "") | (this.props.value === "Select Field"))
+      return;
     fetch(
-      `https://ludus-db-dot-csc131.appspot.com/nominations/winner/${this.props.value
-        .split(" ")
-        .join("%20")}`
+      `https://ludus-db-dot-csc131.appspot.com/nominations/winner/${this.props.value}`
     )
       .then((res) => res.json())
       .then((data) => {
         let info = data.winnerList;
         this.setState({ info });
       })
-      .catch(console.log);
+      .catch(console.error);
   }
 
   getCards() {
     let htmlString = "";
     let nominationList = this.state.info;
-    // console.log(nominationList);
     for (const property in nominationList) {
       let prop1 = nominationList[property];
       let prop2 = prop1.info;
@@ -35,7 +34,7 @@ export default class WinnerCards extends React.Component {
       let winner = prop2.winner;
 
       htmlString += `
-					<div class="materialCard">
+					<div class="materialCard success">
 						<header>
 							<h1>Document ID: ${id}</h1>
 							<h2><small>Lorem ipsum dolor sit amet</small></h2>
@@ -56,6 +55,7 @@ export default class WinnerCards extends React.Component {
   }
 
   render() {
+    this.test();
     let renderHtml = this.getCards();
     return <div dangerouslySetInnerHTML={{ __html: renderHtml }}></div>;
   }
