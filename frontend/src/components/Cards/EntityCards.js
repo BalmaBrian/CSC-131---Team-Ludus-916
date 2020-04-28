@@ -8,6 +8,8 @@ export default class EntityCards extends React.Component {
   }
 
   test() {
+    if ((this.props.value === "") | (this.props.value === "Select Field"))
+      return;
     fetch(
       `https://ludus-db-dot-csc131.appspot.com/nominations/entity/${this.props.value
         .split(" ")
@@ -22,8 +24,6 @@ export default class EntityCards extends React.Component {
   }
 
   getCards() {
-    if ((this.props.value === "") | (this.props.value === "Select Field"))
-      return;
     let htmlString = "";
     let nominationList = this.state.info;
     for (const property in nominationList) {
