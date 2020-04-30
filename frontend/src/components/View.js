@@ -131,6 +131,9 @@ export default class View extends React.Component {
                         Api Documentation
                       </a>
                     </li>
+                    <li>
+                      <a href="./AllRoutes.html">Tests on Routes</a>
+                    </li>
                   </ul>
                 </div>
               </div>
