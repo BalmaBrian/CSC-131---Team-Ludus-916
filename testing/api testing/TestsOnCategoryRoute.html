@@ -18,59 +18,9 @@
     <script>
       // chai has a lot of stuff, let's make assert global
       let assert = chai.assert;
-      let errorData = { message: "This is not a available" };
-      let award1 = {
-        categoryList: [
-          {
-            nominationId: "2O3uskCBNnQPui5oxDm7",
-            info: {
-              winner: true,
-              category: "MUSIC (Adaptation Score)",
-              entity: "The Buddy Holly Story",
-              year: 1978,
-            },
-          },
-          {
-            nominationId: "8uMkNK5PAc7b9dOxNp1P",
-            info: {
-              category: "MUSIC (Adaptation Score)",
-              entity: "Pretty Baby",
-              year: 1978,
-              winner: false,
-            },
-          },
-          {
-            nominationId: "dy4iwyMU36yJKCUqpY8a",
-            info: {
-              category: "MUSIC (Adaptation Score)",
-              entity: "The Wiz",
-              year: 1978,
-              winner: false,
-            },
-          },
-        ],
-      };
-      let award2 = {
-        categoryList: [
-          {
-            nominationId: "vU8LBpLWhAwbCaila4Un",
-            info: {
-              winner: true,
-              category: "SCIENTIFIC AND TECHNICAL AWARD (Special Award)",
-              entity:
-                "To the Society of Motion Picture and Television Engineers - For one hundred years, the Society's members have nurtured technology, provided essential standards, and offered the expertise, support, tools and infrastructure for the creation and post-production of motion pictures.",
-              year: 2015,
-            },
-          },
-        ],
-      };
-      let body = {
-        year: 6969,
-        winner: false,
-        category: "test",
-        entity: "test",
-      };
     </script>
+    <!-- Getting all the test data -->
+    <script src="./All-Info.js"></script>
   </head>
 
   <!-- main section with code and tests -->
