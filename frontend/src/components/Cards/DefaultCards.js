@@ -8,8 +8,6 @@ export default class DefaultCards extends React.Component {
   }
 
   test() {
-    if ((this.props.value === "") | (this.props.value === "Select Field"))
-      return;
     fetch("https://ludus-db-dot-csc131.appspot.com/nominations")
       .then((res) => res.json())
       .then((data) => {
@@ -33,18 +31,13 @@ export default class DefaultCards extends React.Component {
 
       htmlString += `
 					<div class="materialCard">
-						<header>
-							<h1>Document ID: ${id}</h1>
-							<h2><small>Lorem ipsum dolor sit amet</small></h2>
+            <header>
+              <img src="Movie.jpg" alt="Generic Movie Picture" style="width:200px;height:300px;">
+							<h1>${entity}</h1>
+							<h2><small>Document ID: ${id}</small></h2>
 						</header>
 						<div class="cont">
-							Category: ${category}
-							<br />
-							Entity: ${entity}
-							<br />
-							Year: ${year}
-							<br />
-							Winner: ${winner}
+              ${entity} was nominated for the Oscar Award for ${category} in the year ${year}. It was ${winner} that ${entity} won the award.
   					</div>
 					</div>
 				`;

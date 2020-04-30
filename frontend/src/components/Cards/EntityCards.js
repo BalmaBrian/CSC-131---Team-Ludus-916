@@ -36,21 +36,16 @@ export default class EntityCards extends React.Component {
       let winner = prop2.winner;
 
       htmlString += `
-					<div class="materialCard alert">
-						<header>
-							<h1>Document ID: ${id}</h1>
-							<h2><small>Lorem ipsum dolor sit amet</small></h2>
-						</header>
-						<div class="cont">
-							Category: ${category}
-							<br />
-							Entity: ${entity}
-							<br />
-							Year: ${year}
-							<br />
-							Winner: ${winner}
-  					</div>
-					</div>
+				<div class="materialCard alert">
+          <header>
+            <img src="Movie.jpg" alt="Generic Movie Picture" style="width:200px;height:300px;">
+            <h1>${entity}</h1>
+            <h2><small>Document ID: ${id}</small></h2>
+          </header>
+          <div class="cont">
+            ${entity} was nominated for the Oscar Award for ${category} in the year ${year}. It was ${winner} that ${entity} won the award.
+          </div>
+				</div>
 				`;
     }
     return htmlString;

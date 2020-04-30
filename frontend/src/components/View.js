@@ -123,12 +123,12 @@ export default class View extends React.Component {
                   <ul class="nav navbar-nav">
                     <li class="active">
                       <a href="https://github.com/BalmaBrian/csc-131---team-ludus-916">
-                        Github
+                        Oscar Api on Github
                       </a>
                     </li>
                     <li>
                       <a href="https://balmabrian.github.io/csc-131---team-ludus-916/">
-                        Api Documentation
+                        Full Api Documentation
                       </a>
                     </li>
                     <li>
@@ -141,9 +141,16 @@ export default class View extends React.Component {
             <div class="row">
               <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <h3>
-                  Lorem Ipsum
+                  Welcome to the Ludus 916 Bank of Oscar Nominations
                   <div>
-                    <small>Lorem ipsum </small>
+                    <small>
+                      If you want to find an oscar, you can search by entity,
+                      year, category, and even winner.It might take a while to
+                      load. If you want to make more complex searches please
+                      check out our Documentation page on Github or our
+                      Documentation website. You can also check our tests web
+                      page to see real time unit testing.
+                    </small>
                   </div>
                 </h3>
               </div>
@@ -160,6 +167,7 @@ export default class View extends React.Component {
                           dangerouslySetInnerHTML={{ __html: renderHtml }}
                         ></select>
                       </label>
+                      <br />
                       <br />
                       <label>
                         Choose the Information of Interest:
