@@ -43,7 +43,7 @@ Using the `/nominations/` route in a GET request will provide a `200` if success
 
 ### GET `/nominations/{ document ID }`
 
-By using the `/nominations/` route with a singe prameter you can get a singlton document. The prameter must be the document name anything else will provide a `404` and an error messege in json. The error looks like the example below.
+By using the `/nominations/` route with a singe prameter you can get a singlton document. The prameter must be the document id, anything else will provide a `404` and an error messege in json. The error looks like the example below.
 
 ```json
 {
@@ -80,28 +80,139 @@ These four fields: category, entity, winner, and year are required. Giving less 
 
 ### DELETE `/nominations/`
 
+By using the `/nomination/` route you can also delete documents on the database. Before you make a DELETE command, you do need to pass data over. The data has to be in JSON in the format below. This method of deleting is useful when you know the parameters but not the document id.
+
+```json
+{
+  "category": string,
+  "entity": string,
+  "winner": boolean,
+  "year": number
+}
+```
+
+The Resulting response can be the json below, this represents a successful delete and will return a `200` code.
+
+```json
+{
+  "message": "document deleted",
+  "document": "someID"
+}
+```
+
 ### DELETE `/nominations/{ document ID }`
+
+By using the `/nominations/` route with a singe prameter you can delete a document. The prameter must be the document id anything else will provide a `404` and an error messege in json.
+
+The Resulting response can be the json below, this represents a successful delete and will return a 200 code.
+
+```json
+{
+  "message": "document deleted",
+  "document": "someID"
+}
+```
 
 ## Nominations given category
 
+This route is made for querying the oscar database for related information pertaining to category.
+
 ### GET, POST, DELETE `/nominations/category/`
+
+Since the focus of the route is twords query category related information GET, POST, & DELETE will not work and will result in a status of `404` with the following json.
+
+```json
+{
+  "message": "This is not a available"
+}
+```
+
+If you desire to use GET, POST, or DELETE please refer to the [nominations route](#Nominations) section.
 
 ### GET `/nominations/category/{ category Field }`
 
+By using the `/nominations/category/` route with a singe prameter you can get a collection of documents. The prameter must be valid category, anything else will provide a `404` and an error messege in json. The error looks like the example below.
+
+```json
+{
+  "message": "Document dose not exsist"
+}
+```
+
 ## Nominations given entity
+
+This route is made for querying the oscar database for related information pertaining to an entity.
 
 ### GET, POST, DELETE `/nominations/entity/`
 
+Since the focus of the route is twords query entity related information GET, POST, & DELETE will not work and will result in a status of `404` with the following json.
+
+```json
+{
+  "message": "This is not a available"
+}
+```
+
+If you desire to use GET, POST, or DELETE please refer to the [nominations route](#Nominations) section.
+
 ### GET `/nominations/entity/{ entity Field }`
+
+By using the `/nominations/entity/` route with a singe prameter you can get a collection of documents. The prameter must be valid entity, anything else will provide a `404` and an error messege in json. The error looks like the example below.
+
+```json
+{
+  "message": "Document dose not exsist"
+}
+```
 
 ## Nominations given winner
 
+This route is made for querying the oscar database for related information pertaining to a winner.
+
 ### GET, POST, DELETE `/nominations/winner/`
+
+Since the focus of the route is twords query winner related information GET, POST, & DELETE will not work and will result in a status of `404` with the following json.
+
+```json
+{
+  "message": "This is not a available"
+}
+```
+
+If you desire to use GET, POST, or DELETE please refer to the [nominations route](#Nominations) section.
 
 ### GET `/nominations/winner/{ winner Field }`
 
+By using the `/nominations/winner/` route with a singe prameter you can get a collection of documents. The prameter must be valid true or false, anything else will provide a `404` and an error messege in json. The error looks like the example below.
+
+```json
+{
+  "message": "Document dose not exsist"
+}
+```
+
 ## Nominations given year
+
+This route is made for querying the oscar database for related information pertaining to a year.
 
 ### GET, POST, DELETE `/nominations/year/`
 
+Since the focus of the route is twords query year related information GET, POST, & DELETE will not work and will result in a status of `404` with the following json.
+
+```json
+{
+  "message": "This is not a available"
+}
+```
+
+If you desire to use GET, POST, or DELETE please refer to the [nominations route](#Nominations) section.
+
 ### GET `/nominations/year/{ year Field }`
+
+By using the `/nominations/year/` route with a singe prameter you can get a collection of documents. The prameter must be valid year, anything else will provide a `404` and an error messege in json. The error looks like the example below.
+
+```json
+{
+  "message": "Document dose not exsist"
+}
+```
